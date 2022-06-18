@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+
+        .tab {
+            width: 600px;
+            height: 400px;
+            border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            margin: 50px auto;
+        }
+
+        .tab ul {
+            height: 60px;
+            display: flex;
+        }
+
+        .tab ul > li {
+
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: black;
+            background-color: skyblue;
+            cursor: pointer;
+        }
+
+        .tab ul > li.active {
+            background-color: orange;
+        }
+
+        .tab ol {
+            flex: 1;
+            position: relative;
+        }
+        .tab>ol>li{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: blue;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 100px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab ol .active {
+            display: flex;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="tab">
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ol>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+</div>
+
+</body>
+<script>
+    // 简单的面向对象选项卡
+    function Promise(ele) {
+        this.ele = document.querySelector(ele)
+        this.btns = this.ele.querySelectorAll('ul > li')
+        this.containner = this.ele.querySelectorAll('ol > li')
+    }
+    Promise.prototype.chang = function () {
+        console.log(this.btns);
+        var _this = this
+        for(var i = 0;i<this.btns.length;i++){
+            this.btns[i].setAttribute('index',i)
+            this.btns[i].addEventListener('click',function () {
+                for(var j = 0;j<_this.btns.length;j++){
+                    _this.btns[j].className = ''
+                    _this.containner[j].className = ''
+                }
+                this.className = 'active'
+                var index = this.getAttribute('index')
+                _this.btns[index].className = 'active'
+                _this.containner[index].className = 'active'
+            })
+        }
+    }
+    var active = new Promise('.tab')
+    active.chang()
+</script>
+</html>

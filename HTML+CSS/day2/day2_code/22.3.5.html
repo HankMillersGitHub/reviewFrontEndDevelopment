@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+1. css引入方式 <br>
+    * 内部样式 使用style标签设置css样式 <br>
+    * 外部样式 <br>
+        * 使用link标签的href属性引入外部css文件 <br>
+        * 使用style标签的@import引入外部css文件 <br>
+    * 行内样式 style作为属性直接卸载标签后面 <br>
+2. 三种引入方式优先级比较 <br>
+    !important>行内>内部>外部 <br>
+3. 选择器 <br>
+    * 元素选择器 <br>
+<!--        <style>-->
+<!--        div{-->
+<!--            background-color: aqua;-->
+<!--        }-->
+<!--        </style>-->
+<!--        <div>1111111</div>-->
+    * 类选择器<br>
+<!--        <style>-->
+<!--            .demo{-->
+<!--                background-color: blue;-->
+<!--            }-->
+<!--        </style>-->
+<!--        <div class="demo">2222</div>-->
+    * id选择器<br>
+<!--        <style>-->
+<!--            #demo{-->
+<!--                background-color: yellow;-->
+<!--            }-->
+<!--        </style>-->
+<!--        <div id="demo">3333</div>-->
+    * 通配符选择器<br>
+<!--        <style>-->
+<!--            *{-->
+<!--                margin: 0; /* 外边距 */-->
+<!--                padding: 0; /* 内边距 */-->
+<!--            }-->
+<!--        </style>-->
+<!--        <h1>21111</h1>-->
+<!--        <div>11111</div>-->
+    * 群组选择器和后代选择器<br>
+<!--        <style>-->
+<!--            div,p,h1{-->
+<!--                background-color: red;-->
+<!--            }-->
+<!--            /* 群组选择器 */-->
+<!--            div p{-->
+<!--                background-color: blue;-->
+<!--            }-->
+<!--            /* 后代选择器 */-->
+<!--        </style>-->
+<!--        <div>11111-->
+<!--            <p>111-111</p>-->
+<!--        </div>-->
+<!--        <p>22222</p>-->
+<!--        <h1>33333</h1>-->
+    * 伪类选择器 必须遵循以下顺序设置<br>
+        a:link{属性：属性值}      超链接的初始状态<br>
+        a:visited{属性：属性值}   超链接被访问后的状态<br>
+        a:hover{属性：属性值}     鼠标悬停时的状态<br>
+        a:active{属性：属性值}    超链接被激活时的状态<br>
+<!--<style>-->
+<!--    /* 初始状态 */-->
+<!--    a:link{-->
+<!--        color: aqua;-->
+<!--    }-->
+<!--    /* 被访问后的状态 */-->
+<!--    a:visited{-->
+<!--        color: blue;-->
+<!--    }-->
+<!--    /* 鼠标悬停时的状态 */-->
+<!--    a:hover{-->
+<!--        color: red;-->
+<!--    }-->
+<!--    /* 超链接被激活的状态 */-->
+<!--    a:active{-->
+<!--        color: green;-->
+<!--    }-->
+<!--</style>-->
+<!--<a href="http://www.baidu.com">百度</a>-->
+4. 选择器的权重<br>
+！important > 行内 > 包含选择符 > id > 类选择器 > 元素选择器<br>
+选择器解析规则：<br>
+        * 当不同选择符的样式设置具有冲突时，高权重选择符的样式会覆盖低权重选择符的样式<br>
+        * 相同权重的选择符，样式遵循就近原则；哪个选择符最后定义，就采用哪个选择符的样式<br>
+<!--<style>-->
+<!--    div{-->
+<!--        background-color: red;-->
+<!--    }-->
+<!--    .div{-->
+<!--        background-color: blue;-->
+<!--    }-->
+<!--    #div{-->
+<!--        background-color: pink;-->
+<!--    }-->
+<!--</style>-->
+<!--<div class="div" id="div">1111111</div>-->
+5. 文字颜色的取值<br>
+    * 直接写颜色<br>
+    * rgb(255，0，0)格式  red green blue的缩写<br>
+    * #000000  十六进制写法 两位代表一个颜色  同样为红绿蓝<br>
+6. 背景图片
+<!--<style>-->
+<!--    .box{-->
+<!--        width: 500px;-->
+<!--        height: 5100px;-->
+<!--        background-color: red;-->
+<!--        background-image: url('../day2_img/1.PNG');-->
+<!--        background-repeat: no-repeat;-->
+<!--        /*background-size: 500px 500px; !* 设置背景图片的宽高 *!*/-->
+<!--        margin: 0 auto;-->
+<!--        background-position: left center;-->
+<!--        background-attachment: fixed; /* 固定在浏览器某位置 可以做到视差效果 */-->
+<!--    }-->
+<!--</style>-->
+<!--<div class="box"></div>-->
+
+</body>
+</html>

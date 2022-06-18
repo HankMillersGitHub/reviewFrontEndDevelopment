@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 20px;
+            height: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<img src="1.PNG" alt="">
+
+<script>
+    var img = document.querySelector('img')
+    document.onmousemove = function (e) {
+        var x = e.clientX
+        var y = e.clientY
+
+        img.style.top = (y+10)+ 'px';
+        img.style.left = (x+10) + 'px';
+    }
+
+
+</script>
+</body>
+</html>

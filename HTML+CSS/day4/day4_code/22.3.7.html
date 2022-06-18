@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+1. 静态定位 static 默认效果不支持top right bottom left设置 <br>
+2. 相对定位 relative<br>
+3. 绝对定位 当需要给子盒子设置绝对定位时 要先给父盒子设置相对定位 这样既不会影响父盒子的位置 也不会影响子盒子的绝对定位 ”子绝父相“<br>
+4. 层级 z-index 该属性值越高 层级越高 <br>
+5. 绝对定位中的层级关系 <br>
+* 父子关系中 层级失效时 给子盒子的z-index设置为负值<br>
+* 兄弟关系中 层级和平常一样 后来者居上<br>
+6. 让行内元素变成块元素<br>
+* display：block<br>
+* 设置absolute<br>
+* float：left<br>
+7. 定位元素设置水平垂直居中<br>
+* 设置绝对定位 将top和left先设置为50% 然后设置外边距 left和top设置为负的自身宽高的一半<br>
+8. 定位和浮动的区别<br>
+* 浮动是半脱离文档流 定位是全脱离文档流<br>
+9. 锚点 页面不同区域得到跳转<br>
+* 为div设置id 将a标签中的href地址设置为#id 即可以实现锚点跳转<br>
+10. 精灵图<br>
+* 为盒子设置图片背景 并使用background-image属性对图片进行移动 移动到相应位置 减少对服务器的请求<br>
+11. 宽高自适应<br>
+* 为宽高设置值为auto 为自适应 应用于导航栏和通栏<br>
+* 父子浮动元素宽高自适应 清除高度塌陷<br>
+** 为父元素设置高度 缺点：如果子元素过多 失效<br>
+** 增加空块标签 缺点：不利于代码可读性<br>
+** overflow：hidden 缺点：溢出隐藏会将所有溢出元素也隐藏<br>
+** 最优方案：在after伪元素中添加content：”“；（伪元素内容）display：block；（伪元素显示为块级元素）clear：both；（清楚两端浮动）并设置宽高为零
+visibility：hidden；（可见显示为隐藏）<br>
+12. 伪元素<br>
+* 依托于父级元素的元素 和伪类不同 语法为 父元素名：：伪元素{}<br>
+13. display:none;和visibility:hidden;<br>
+* display：none不占位置的隐藏<br>
+* visibility:hidden;占位隐藏<br>
+14. 窗口自适应<br>
+* style中添加
+<pre>html,body{
+    height:100%;
+    }</pre>
+15. 两栏布局 左边固定 右边自适应<br>
+* 左边浮动 右边加margin-left<br>
+* 使用calc（）函数 width设置为 calc（100% - *px） 加减乘除都支持 但是必须在加减乘除加空格<br>
+16. 三栏布局 左右固定 中间自适应<br>
+* 左右浮动 然后中间见缝插针<br>
+* 设置中间宽度为calc（）函数 并将中间元素浮动<br>
+17. 表单进阶
+* 单选框 设置name 实现单选 使用label标签并给input设置id label中for=”id名“实现点击文字选中单选  input中设置checked 表示默认选中<br>
+* 多选框 同单选框<br>
+* 上传文件  将file换为image 可以变成图片按钮<br>
+** 将file换为hidden 可以隐藏按钮 用来将用户信息带给后台 input中的value属性值就是要带给后台的信息<br>
+* 为input加disabled 可以使input变成禁用  为文本框添加readonly使其变成只读<br>
+* 下拉菜单 select支持的属性 size 表示显示几个选项   multiple 可以多选<br>
+** option支持的属性 value 提供给后端的值 select 默认选中<br>
+* 文本域 textarea 默认value值是写在双标签之间的 设置固定值 将textarea的resize设置为none<br>
+* 字段集 使用fieldset标签 实现框包input 使用legend标签实现字符集说明文字 并和普通标签一样 可以设置宽高等属性
+
+</body>
+</html>

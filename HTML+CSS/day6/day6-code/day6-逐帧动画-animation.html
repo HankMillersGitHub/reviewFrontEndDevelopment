@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper-container {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+
+        .swiper-wrapper {
+            width: 1900px;
+            animation: kaTong 1s steps(1,end) infinite;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+        }
+
+        @keyframes kaTong {
+            0% {
+                transform: translateX(0px);
+            }
+
+            11.1111% {
+                transform: translateX(-200px);
+            }
+
+            22.2222% {
+                transform: translateX(-400px);
+            }
+
+            33.3333% {
+                transform: translateX(-600px);
+            }
+
+            44.4444% {
+                transform: translateX(-800px);
+            }
+
+            55.5555% {
+                transform: translateX(-1000px);
+            }
+
+            66.6666% {
+                transform: translateX(-1200px);
+            }
+
+            77.7777% {
+                transform: translateX(-1400px);
+            }
+
+            88.8888% {
+                transform: translateX(-1600px);
+            }
+
+            100% {
+                transform: translateX(-1800px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong1.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong2.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong3.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong4.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong5.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong6.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong7.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong8.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/katong9.PNG" alt=""></div>
+            <div class="swiper-slide"> <img src="../day6-img/逐帧动画/tidai.PNG" alt=""></div>
+        </div>
+    </div>
+</body>
+
+</html>

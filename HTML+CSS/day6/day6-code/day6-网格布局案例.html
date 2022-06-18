@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        html,
+        body {
+            height: 100%;
+
+        }
+
+        .box {
+            width: 600px;
+            height: 300px;
+            display: grid;
+            border: 1px solid red;
+            grid-template-rows: repeat(3, 100px);
+            grid-template-columns: repeat(6, 100px);
+            grid-template-areas: 'a a a a b b '
+                'a a a a c c'
+                'd d e f c c';
+        }
+
+        .box div:nth-child(1) {
+            grid-area: a;
+            background-image: url('../../轮播素材/1.png');
+        }
+
+        .box div:nth-child(2) {
+
+            background-image: url('../../轮播素材/2.png');
+            grid-area: b;
+        }
+
+        .box div:nth-child(3) {
+            grid-area: c;
+            background-image: url('../../轮播素材/3.png');
+        }
+
+        .box div:nth-child(4) {
+            grid-area: d;
+            background-image: url('../../轮播素材/4.png');
+        }
+
+        .box div:nth-child(5) {
+            grid-area: e;
+            background-image: url('../../轮播素材/5.png');
+        }
+
+        .box div:nth-child(6) {
+            grid-area: f;
+            background-image: url('../../轮播素材/6.png');
+        }
+
+        .box div {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

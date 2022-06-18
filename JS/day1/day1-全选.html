@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        section {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            color: white;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        body div {
+            display: block;
+
+        }
+    </style>
+</head>
+<body>
+<section>
+    <input type="checkbox" id="all">全选 <br>
+    <input type="checkbox" class="select">选项一<br>
+    <input type="checkbox" class="select">选项二<br>
+    <input type="checkbox" class="select">选项三<br>
+</section>
+</body>
+<script>
+    // 获取元素
+    var all = document.querySelector('input')
+    var select = document.querySelectorAll('input:nth-child(n+2)')
+    // 为全选框添加点击事件
+    all.onclick = function () {
+        // 获取自身checked值
+        var a = all.checked
+        // 循环赋值
+        for (var i = 0; i < select.length; i++) {
+            select[i].checked = a
+        }
+    }
+    // 循环判断选项的checked值
+    for (var i = 0; i < select.length; i++) {
+        // 为每一个选项添加点击事件
+        select[i].onclick = function () {
+            // 假设选项都被选中 将flag设置为true
+            var flag = true;
+            // 循环判断每个选项实际的checked值
+            for (var j = 0; j < select.length; j++) {
+                // 如果有一个选项的checked值为假  则flag为假
+                if (select[j].checked === false) {
+                    flag = false
+                    break
+                }
+            }
+            // 将最终flag值赋值给全选框
+            all.checked = flag
+        }
+
+    }
+</script>
+</html>

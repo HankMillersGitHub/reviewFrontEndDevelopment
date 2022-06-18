@@ -1,0 +1,138 @@
+<!doctype html>
+<!-- 文档声明 告诉浏览器按照什么标准解析文件-->
+<html lang="zh-CN">
+<!-- 告诉浏览器本文件中包含的内容是什么语言  lang表示language-->
+<head>
+    <meta charset="UTF-8">
+    <!--    解码方式-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>my first webpage</title>
+</head>
+<body>
+1.文本标题标签 < h * > < / h * >
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<h3>三级标题</h3>
+<h4>四级标题</h4>
+<h5>五级标题</h5>
+<h6>六级标题</h6>
+2. 段落文本（p）
+<p>一号段落文本内容</p>
+<p>二号段落文本内容</p>
+以上二者之间有段间距<br>
+3. 换行（br）
+这一句应该在一行<br/>但是加了换行标签所以分开了<br>
+4. 水平线
+<hr/>
+5. 加粗（推荐strong）
+<b>这里是被加粗的</b>这是没被加粗的
+<strong>这是语义化标签加粗的</strong>这是没被加粗的 <br>
+6.倾斜文本（推荐em）
+<i>这是被倾斜的</i>这是没有被倾斜的
+<em>这是被语义化标签倾斜的</em>这是没有被语义化标签倾斜的<br>
+7. 删除线（推荐del）
+<s>这是添加了删除线的</s>这是没有添加删除线的
+<del>这是添加了语义化标签删除线的</del>
+这是没有添加语义化标签删除线的<br>
+8. 扩展
+<u>这是添加了下划线的</u>这是没有添加下划线的
+<sub>这是下标</sub>
+<sup>这是上标</sup>
+9. 水平线的属性
+<hr color="red" width="300px">
+<hr color="green" width="250px" align="right">
+<hr color="yellow" width="200px" align="left">
+<hr noshade>
+<hr>
+10. 特殊符号
+左尖括号&lt;右尖括号&gt;空格&nbsp; 占一个中文字符的空格 &emsp;版权号&copy; 商标&trade; &reg;
+Lorem 快速生成随机字符
+11. div（没有具体含义但是独占一行）和span（额米有实际意义，主要用于对文本独立修饰的时候，内容有多宽就占用多宽）
+<div>123456</div>
+<div>123456</div>
+<div>123456</div>
+12. 列表 - 有序列表和无序列表
+<br>li中可以放置标签 但是ol ul dl中只能包含li <br>
+有序列表：包含type属性可以控制序号的样式 start属性表示从那个序号开始 取值只能是数字
+<br>
+无序列表：type属性控制黑点样式 属性值为none为取消黑点
+<ul type="square">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<ol type="I" start="3">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ol>
+<dl>
+    <dt>我是图片</dt>
+    <dd>我是文字</dd>
+</dl>
+13. 图片标签 <br>
+<img src="../day1_img/1.PNG" alt="加载失败现实的文字" title="鼠标悬停显示的文字">
+图片标签中的属性 alt属性加载失败显示的文字
+title属性 鼠标悬停显示的文字
+width 宽度
+height 高度 <br>
+14. 超链接标签
+target属性 规定在何处打开文档
+<a href="http://www.baidu.com">百度</a>
+<a href="http://www.baidu.com" target="_blank" title="百度">百度</a>
+<br>
+15. table的基本结构 行 列 单元格
+<table border="1" width="200px" height="200px" align="center" bordercolor="red" bgcolor="aqua" cellspacing="0"
+       cellpadding="0px">
+    <tr height="150px" align="center" valign="bottom">
+        <!--            如果一个行设置高度 影响的是整个一行-->
+        <td width="100px">1</td>
+        <!--            如果一个单元格设置宽度 影响的是整个一列-->
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td align="right" valign="top">4</td>
+    </tr>
+</table>
+<br>
+16. 表格合并
+<table border="1" align="center" width="50%" height="300px">
+    <tr>
+        <td></td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+    </tr>
+    <tr>
+        <td>小刘</td>
+        <td colspan="3">60</td>
+
+    </tr>
+    <tr>
+        <td>小李</td>
+        <td rowspan="3">70</tdrow>
+        <td>70</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>小马</td>
+
+        <td>70</td>
+        <td>70</td>
+    </tr>
+</table>
+table>tr*2>td*2 快捷生成两行两列 <br>
+17. 表单标签
+<form action="http://www.baidu.com" method="post">
+    用户信息：<input type="text" placeholder="请输入用户名" value="123" name="userName">
+    密码：<input type="password" name="passWord">
+    <input type="button">
+    <input type="reset">
+    <button type="submit">登录</button>
+    <!--    提交信息到action规定的地址-->
+</form>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../../ae715-glzng-001.ico">
+    <title>Document</title>
+    <style>
+
+        /*.div{*/
+        /* background-size属性只能单独使用不能使用background复合属性 */
+        /* 使用background复合属性时 如果某个属性没有复制 浏览器会默认使用系统的默认属性 并覆盖掉之前设置的属性值 */
+        /*background-color: red;*/
+        /*width: 500px;*/
+        /*height: 3000px;*/
+        /*background-image: url("../day3_img/demo1.png");*/
+        /*background-repeat: no-repeat;*/
+        /*background-position: center center;*/
+        /*background-attachment: fixed;*/
+        /*    background: red url("../day3_img/demo2.png") no-repeat center fixed;*/
+        /*}*/
+    </style>
+</head>
+<body>
+1. 背景复合属性 <br>
+<style>
+    /*.div{*/
+    /* background-size属性只能单独使用不能使用background复合属性 */
+    /* 使用background复合属性时 如果某个属性没有复制 浏览器会默认使用系统的默认属性 并覆盖掉之前设置的属性值 */
+    /*background-color: red;*/
+    /*width: 500px;*/
+    /*height: 3000px;*/
+    /*background-image: url("../day3_img/demo1.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center center;*/
+    /*background-attachment: fixed;*/
+    /*    background: red url("../day3_img/demo2.png") no-repeat center fixed;*/
+    /*}*/
+</style>
+<div class="div"></div>
+<br>
+2. 浮动属性 (见缝插针原则)
+<!--<style>-->
+<!--    .float1{-->
+<!--        width: 100px;-->
+<!--        height: 100px;-->
+<!--        background: red;-->
+<!--        float: left;-->
+
+<!--    }-->
+<!--    .float2{-->
+<!--        width: 200px;-->
+<!--        height: 150px;-->
+<!--        background: yellow;-->
+<!--        /*float: left;*/-->
+<!--    }-->
+<!--</style>-->
+<!--<div class="float1"></div>-->
+<!--<div class="float2"></div>-->
+
+3. 清除浮动 <br>
+解决高度塌陷<br>
+* 为外层div添加container 并将其高度写成内层元素的最大高煦<br>
+* 清浮动属性 给补位元素加clear属性<br>
+* 在上层元素身上加空div 并设置clear属性<br>
+* overflow:hidden 引发bfc让浮动元素计算高度 <br>
+<!--<style>-->
+<!--    .demo1{-->
+<!--        width: 300px;-->
+<!--        height: 300px;-->
+<!--        float: left;-->
+<!--background: red;-->
+<!--    }-->
+<!--    .demo2{-->
+<!--        width: 300px;-->
+<!--        height: 300px;-->
+<!--        float: left;-->
+<!--        background: blue;-->
+<!--    }-->
+<!--    .demo3{-->
+<!--        width: 600px;-->
+<!--        height: 400px;-->
+<!--    /*clear:both;*/-->
+<!--        background: yellow;-->
+<!--    }-->
+<!--    .container{-->
+<!--        /*height: 300px;*/-->
+<!--        overflow: hidden;-->
+<!--    }-->
+<!--</style>-->
+<!--<div class="container">-->
+<!--    <div class="demo1"></div>-->
+<!--    <div class="demo2"></div>-->
+<!--    <div style="clear: left"></div>-->
+<!--</div>-->
+<!--<div class="demo3"></div>-->
+4. 盒子模型 <br>
+* padding<br>
+** 一个值 上下左右都一样<br>
+** 两个值 上下 左右 一样<br>
+** 三个值 上 下 左右 一样<br>
+** 四个值 上 右 下 左 <br>
+** 背景色可以蔓延到内边距<br>
+** 可以单独设置某方向的内边距<br>
+* border<br>
+** 背景色也可以蔓延到边框<br>
+** 可以分别设置边框<br>
+** border属性可以拆分为border-color border-width border-style 这三个属性都可以和padding属性一样设置不同方向不同效果<br>
+** solid 实线 double 双实线 dashed 虚线 dotted 点状线 transparent透明色<br>
+* margin<br>
+** 同padding<br>
+** 屏幕居中方案 margin: 0 auto ;<br>
+** margin的特性:<br>
+*** 兄弟关系,两个盒子垂直外边距与水平外边距问题?<br>
+**** 垂直方向 外边距取最大值 水平方向 外边距合并处理<br>
+*** 父子关系,给子盒子加外边距,但作用于父盒子身上了,怎么解决?<br>
+**** 1. 给父元素设置内边距 <br>
+**** 2. 给父元素设置边框<br>
+**** 3. 给随意元素设置浮动<br>
+**** 4. 给父元素设置 overflow:hidden <br>
+5. 空余空间<br>
+** pre标签叫预格式化文本标签 可以保留输入时的空格tab回车等<br>
+6. 元素显示类型<br>
+* 元素含有display：block display：list-item即为块元素<br>
+* 元素含有display：inline即为行内元素 只能设置左右边距不能设置上下边距 <br>
+* 元素含有display：inline-block即为行内块元素 上右下左边距都可以设置<br>
+<style>
+    .outbox {
+        width: 100px;
+        height: 100px;
+        background: red;
+
+    }
+
+    .outbox:hover ul{
+        display: block;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        display: none;
+    }
+</style>
+<div class="outbox">123
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* css */
+    * {
+        padding: 0%;
+        margin: 0;
+
+    }
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(white 50%, black 50%);
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        border: 2px solid gray;
+        margin: 0 auto;
+        transition: all 20s;
+
+
+    }
+    div:hover{
+                
+        transform: rotate(-3600deg);
+    }
+
+    div::before {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        background:radial-gradient(black 20%,white 20%);
+
+        border-radius: 50%;
+    }
+    div::after{
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        background:radial-gradient(white 20%,black 20%);
+        border-radius: 50%;
+    }
+</style>
+
+<body>
+    <!-- 主体 -->
+    <div> </div>
+
+</body>
+<script>
+    // js
+
+</script>
+
+</html>

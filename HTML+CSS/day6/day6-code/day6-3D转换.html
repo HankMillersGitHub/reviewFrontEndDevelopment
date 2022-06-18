@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 平移 */
+    .box1 {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        transform-style: preserve-3d;
+        position: relative;
+        perspective: 1000px;
+       
+    }
+
+    .center1 {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        left: 50%;
+        top: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+        transition: all 2s linear;
+    }
+    .box1:hover .center1{
+        transform: translateZ(100px);
+    }
+    /* 旋转 */
+    .box2 {
+        width: 500px;
+        height: 500px;
+        display: flex;
+        border: 1px solid red;
+        transform-style: preserve-3d;
+    }
+
+    .center2 {
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+        margin: auto;
+        transition: all 2s;
+    }
+    .box2:hover .center2{
+        transform: rotate3d(1,1,1,90deg);
+    }
+    /* 缩放 */
+    .box3{
+        width: 500px;
+        height: 500px;
+        transform-style: preserve-3d;
+        border: 1px solid blue;
+        display: flex;
+        perspective: 1000px;
+    }
+    .center3{
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        margin: auto;
+        transform: scaleZ(20) rotateX(45deg);
+    }
+</style>
+
+<body>
+    <!-- 平移 -->
+    <div class="box1">
+        <div class="center1"></div>
+    </div>
+    <!-- 旋转 -->
+    <div class="box2">
+        <div class="center2"></div>
+    </div>
+    <!-- 缩放 -->
+    <div class="box3">
+        <div class="center3"></div>
+    </div>
+</body>
+
+</html>

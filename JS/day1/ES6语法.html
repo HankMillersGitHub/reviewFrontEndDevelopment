@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6语法</title>
+</head>
+<body>
+<script>
+    // 函数定义
+    /*
+    * 1. let/const和var 的区别
+    *   * var会进行预解析（定制之前可以使用  值是undefined），let/const不会进行预解析（定义之前不能使用）
+    *   * var可以声明两个重名的变量，let/const不能定义重名变量
+    *   * var没有块级作用域，let const有块级作用域
+    * 2. let和const的区别
+    *   * let可以定义变量的时候不进行赋值，const在定义的时候必须赋值
+    *   * let定义的变量可以被修改，const定义的常量一经赋值不能修改
+    *
+    * */
+//    end
+//    箭头函数
+    /*
+    *   * 语法
+    *       var fn = () => {
+                console.log('hello world');
+                }
+            fn();
+    *   * 特殊之处
+    *       1. 箭头函数某些情况可以省略小括号
+    *           当你的形参只有一个的时候，可以不写小括号。没有形参或有多个形参必须写小括号
+    *       2. 箭头函数某些时候可以省略大括号不写
+    *           当你的代码只有一句话时，可以不写大括号，并且会自动把这一句话的结果当作函数返回值
+    *       3. 箭头函数内没有argument（实参）
+    *       4. 箭头函数内没有this，内部的this就是外部作用域的this
+    * */
+
+    //    end
+    // 函数参数默认值
+    /*
+   * 函数参数默认值
+   *   函数在定义的时候，可以直接给形参设置一个默认值
+   *   当没有传递实参的时候，就使用默认值
+   *   当传递了实参，就是用传递的实参
+   *   普通函数可以使用，箭头函数也可以使用
+   * 解构赋值
+   *   快速从对象或数组中获取成员
+   *   解构赋值分成两种
+   *       数组的解构赋值
+   *           * 语法
+   *               let [a,b] = [100,200];
+                   console.log(a);
+                   console.log(b);
+   *       对象的解构赋值
+   *           * 语法
+   *               let obj = {name:'mzh',age:18}
+                   let {name:a,age:b} = obj;
+                   * 上一行中的冒号的意思时定义一个a变量，解构对象中name成员
+                   console.log(name);
+                   console.log(age);
+   *
+   * */
+    // end
+    // 模板字符串
+    /*
+    * ES6内新增的定义字符串的方式
+    * 1. 可以换行
+        * 以前：var str = ‘内容’
+        * 现在：var str = `其中内容可以换行书写`
+    * 2. 可以在字符串内解析变量，在字符串中书写${变量}
+    *       var a = 100;
+            var str = `${a}+100 = 100`
+            console.log(str);
+    * */
+    //end
+    // 展开运算符
+    /*
+         ...
+         作用：展开数组的中括号或者对象的大括号
+            * 合并数组
+            * 给函数传递参数
+            * 复制对象（复制对象时，如果对象中有相同成员，注意书写的顺序问题）
+    * */
+    //end
+    // 类语法
+    /* （注意：必须和new关键字连用 否则会报错）
+        静态属性  类可以调用，实例不能调用
+    *class 类名{
+    * // 下方写原先的构造函数体
+        constructor(name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        * // 下方写原型上的方法
+        sayHi(){
+            console.log('helloworld');}
+        static a = 1;   // 静态属性
+        static b = function(){  // 静态方法
+        }
+    }
+    *
+    * */
+    class Person{
+        constructor(name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        sayHi(){
+            console.log('helloworld');}
+        static go (){
+            console.log('go');
+        }
+    }
+    var p1 = new Person('mzh',18);
+    console.log(p1);
+    console.log(p1.sayHi);
+    var p2 = new Person('zsq',20);
+    Person.go();
+    //end
+
+</script>
+</body>
+</html>

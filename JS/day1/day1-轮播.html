@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    ul, li {
+        list-style: none;
+    }
+
+    .banner {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        margin: 50px 0;
+    }
+
+    .banner > ul {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .banner > ul > li {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s linear;
+    }
+
+    .banner > ul > li.active {
+        opacity: 1;
+    }
+
+    .imgBox > li > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner > ol {
+        width: 200px;
+        height: 30px;
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        background-color: rgba(77, 99, 0, .5);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+
+    }
+
+    .banner > ol > li {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        border-radius: 15px;
+        cursor: pointer;
+
+    }
+
+    .banner > ol > li.active {
+        opacity: 0.5;
+    }
+
+    .banner > .left {
+        position: absolute;
+        font-size: 30px;
+        color: blue;
+        left: 20px;
+        top: 50%;
+        margin-top: -15px;
+        cursor: pointer;
+    }
+
+    .banner > .right {
+        position: absolute;
+        font-size: 30px;
+        color: blue;
+        right: 20px;
+        top: 50%;
+        margin-top: -15px;
+        cursor: pointer;
+
+    }
+
+</style>
+<body>
+<div class="banner">
+    <ul class="imgBox">
+        <li class="active"><img src="./轮播素材/1.png" alt=""></li>
+        <li><img src="./轮播素材/2.png" alt=""></li>
+        <li><img src="./轮播素材/3.png" alt=""></li>
+        <li><img src="./轮播素材/4.png" alt=""></li>
+    </ul>
+    <ol>
+        <!--        给元素设置自定义属性  方便判断元素的位置  会被document.querySelector记录到 元素.target.dataset.自定义属性名中-->
+        <li data-i="0" data-name="point" class="active"></li>
+        <li data-i="1" data-name="point"></li>
+        <li data-i="2" data-name="point"></li>
+        <li data-i="3" data-name="point"></li>
+    </ol>
+    <div class="left">&lt;</div>
+    <div class="right">&gt;</div>
+</div>
+<script>
+    // 获取页面中的元素
+    var imgs = document.querySelectorAll('ul>li');
+    var pointer = document.querySelectorAll('ol>li');
+    // 获取banner元素 方便进行事件委托
+    var banner = document.querySelector('.banner')
+    // 设置当前图片的index值为0
+    var index = 0;
+    //为banner元素添加点击事件 并通过形参e获取元素属性
+    banner.onclick = function (e) {
+        // 当鼠标点击的是左侧箭头时  执行上一张操作
+        if (e.target.className === 'left') {
+            changeOne(false)
+        }
+        // 当鼠标点击的是右侧箭头时  执行下一张操作
+
+        if (e.target.className === 'right') {
+            changeOne(true)
+
+        }
+        // 当鼠标点击的是下方原点时  执行某一张操作
+        // 获取当前元素的name 判断是不是等于point
+        if (e.target.dataset.name === 'point') {
+            // 将当前元素处于第几位传入changOne函数
+            changeOne(e.target.dataset.i)
+
+        }
+    }
+    // changOne函数
+    function changeOne(type) {
+        // 将当前图片和当前point的class值改为空
+        imgs[index].className = ''
+        pointer[index].className = ''
+        // 如果传入参数为true  执行下一张
+        if (type === true) {
+            index++
+            // false  执行下一张
+
+        } else if (type === false) {
+            index--
+            // 如果传入参数为数字  执行某一张
+
+        } else {
+            index = type
+        }
+        // 判断point的值是否超过最大或最小
+        if (index >= imgs.length) {
+            index = 0
+        }
+        if (index < 0) {
+            index = imgs.length - 1
+        }
+        // 将需要显示的图片和point的class值改为active
+        imgs[index].className = 'active'
+        pointer[index].className = 'active'
+    }
+    //设置计时器  每隔五秒执行一次下一张操作
+    setInterval(function () {
+        changeOne(true)
+    }, 5000)
+
+
+</script>
+</body>
+</html>

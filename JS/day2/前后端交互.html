@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前后端交互</title>
+</head>
+<body>
+<script>
+    /*
+    *   ajax
+    *       1. 创建ajax对象  var xhr = new XMLHttpRequest()
+    *       2. 配置本次请求信息  xhr.open(请求方式，请求地址，是否异步)
+    *       3. 注册请求完成事件 xhr.onload = function(){}
+    *           xhr.responseText拿到后端传送的数据
+    *           JSON.parse(json格式的字符串) 返回值是js格式的数据
+    *       4. 把请求发送出去 xhr.send()
+    *   请求方式
+    *       GET偏向获取的语义化  参数是查询字符串 大小有2kb左右  参数在地址后面
+    *       POST偏向提交的语义化    参数格式多样，但是需要特殊说明  理论上大小没有限制  参数在请求体内
+    *
+    *
+    * */
+    // get请求
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET','http://localhost:8080/test/first?name=mzh&age=18',true);
+    xhr.onload = function (){
+        console.log(JSON.parse(xhr.responseText));
+    }
+    // post请求
+    xhr.send();
+    var xhr1 = new XMLHttpRequest();
+    xhr1.open('POST','http://localhost:8080/test/secend',true);
+    xhr1.onload = function (){
+        console.log(JSON.parse(xhr1.responseText));
+    }
+    xhr1.setRequestHeader('content-type','application/x-www/form-urlencoded')
+    xhr1.send(name = 'mzh',age = 18);
+</script>
+</body>
+</html>

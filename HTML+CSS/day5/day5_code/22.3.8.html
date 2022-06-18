@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+1. html5新增语义化标签 <br>
+2. h5新增音视频标签 <br>
+3. 表单增强
+* 给input标签添加autofocus属性 自动聚焦
+* 给input标签设置required属性可以设置为必填项<br>
+* 给input设置multiple 可以填写多个字段用逗号隔开<br>
+* 给input设置pattern属性 添加正则表达式 进行表单验证<br>
+4. 数据列表 datalist标签 包裹option标签 option的value写选项名称 datalist设置id 并于input标签通过input标签的list属性关联 <br>
+5. CSS3选择器<br>
+* 层级选择器<br>
+** 子代选择器 父元素>子元素{}<br>
+** 兄弟选择器 当前元素+需要选中的元素{} 选中当前元素后面的第一个兄弟元素<br>
+*** 当前元素~需要选中的元素{} 选中当前元素后面所有符合条件的兄弟元素<br>
+* 属性选择器<br>
+** 标签名[属性名~=属性值]{} 标签名可有可无 属性名可以有多个 属性值可有可无不加引号 波浪号表示只要包含该属性值就会被匹配 <br>
+** ^="" 表示以某字符开头 $="" 表示以某字符结尾 *="" 表示包含某字符 实现模糊匹配 这里需要写引号<br>
+* 结构伪类选择器<br>
+** :first-child{}第一个子元素<br>
+** :last-child{}最后一个子元素<br>
+** :nth-child() 第几个子元素 可以设置为公式选中奇数odd或偶数even个子元素<br>
+** :only-child 只有一个子元素的才会被选中<br>
+** :empty 空标签会被选中<br>
+** :root 匹配文档根源素 永远是html<br>
+* 目标伪类选择器<br>
+** :target 结合锚点使用<br>
+* UI元素状态伪类选择器<br>
+** E:enabled 匹配所有用户界面中处于可用状态的元素<br>
+** E:disabled 匹配所有用户界面中处于不可用状态的元素<br>
+** E:checked 匹配所有用户界面中处于选中状态的元素<br>
+** E:selection 匹配元素中被用户选中或处于高亮状态的部分<br>
+** E:focus 匹配元素中被被聚焦的元素<br>\
+** E::selection 当元素中内容被用户选中或高亮状态时匹配<br>
+******** 去掉checkbox的默认样式 使用appearance：none<br>
+* 否定伪类选择器<br>
+** E：not（） 括号中填写之前选中元素的选择器 意思是除了选中的元素 其余所有都匹配<br>
+* 动态伪类选择器<br>
+** E：link 链接伪类选择器 选择匹配的元素，并且被匹配的元素被定义了超链接并未被访问<br>
+** E：visited 链接伪类选择器 选择匹配的元素，并且被匹配的元素被定义了超链接已经被访问<br>
+** E:active 用户行为选择器 选择匹配的元素 且匹配的元素被激活，常用于链接锚点和按钮<br>
+** E:hover 用户行为选择器 选择匹配的元素 并且用户的鼠标停留在元素上 IE6及一下浏览器仅支持a:hover<br>
+6. 文本阴影<br>
+text-shadow: 2px 2px 2px red; 第一个值为水平方向位移 第二个值为垂直方向位移 第三个值为模糊值 第四个值为阴影颜色 并且该属性可以设置多个用逗号隔开<br>
+7. 盒子阴影<br>
+box-shadow: 10px 10px 5px 10px red;第一个值为水平方向位移 第二个值为垂直方向位移 第三个值为模糊值 第四个值为阴影和原来元素的大小 第五个值为颜色 第六个值为inset内阴影
+并且该属性可以设置多个用逗号隔开<br>
+8. border-radius 一个值 左上右上右下左下都一样 两个值 左上右下 左下右上一样 三个值 左上 右上左下 右下 四个值 左上 右上 右下 左下<br>
+* 可以直接通过 border-垂直方向（top/bottom）-水平方向（left/right）-radius进行某方向单独设置<br>
+* 通过border-radius：*px *px *px *px /*px *px *px *px 进行不对称圆角设置<br>
+9. 字体引入<br>
+<pre>
+  * @font-face{
+    font-family: yourFontName;
+    src:url();
+    }
+</pre>
+10. 怪异盒模型<br>
+* 为元素添加box-sizing：content-box 表示标准盒模型 添加内边距和边框 盒子随之变大<br>
+* 为元素添加box-sizing：border-box 表示怪异盒模型 添加内边距和边框 盒子大小不变<br>
+11. 弹性盒<br>
+* 影响<br>
+** 子元素默认横向排列<br>
+** 行内元素变成了块级元素<br>
+** 当盒子内只有一个元素时 给该元素设置margin：auto 就可以实现垂直水平居中<br>
+* 修改主轴位置<br>
+** 为盒子添加flex-direction：column 主轴变成垂直方向<br>
+** 为盒子添加flex-direction：column-reverse 主轴变成垂直方向并且指向相反<br>
+** 为盒子添加flex-direction：row-reverse 主轴变成水平方向并且指向相反<br>
+** 为盒子添加flex-direction：row 主轴变成水平方向<br>
+* 修改主轴对齐方式
+** justify-content: center 改变主轴对齐方式 居中对齐
+** justify-content: space-between 改变主轴对齐方式 两端对齐
+** justify-content: space-around 改变主轴对齐方式 两端对齐 子盒子的左右两边等距<br>
+** justify-content: flex-end 改变主轴对齐方式 右对齐<br>
+** justify-content: flex-start 改变主轴对齐方式 左对齐<br>
+* 修改侧轴对齐方式<br>
+** align-items: flex-end 改变侧轴对齐方式 下对齐<br>
+** align-items: flex-start 改变侧轴对齐方式 上对齐<br>
+** align-items: flex-start 改变侧轴对齐方式 上对齐<br>
+** align-items: center 改变侧轴对齐方式 中间对齐<br>
+* 折行<br>
+** 使用flex-warp：warp设置内元素折行<br>
+** 使用align-content： 设置内元素折行方式 flex-start为上边紧密连接 flex-end为下边紧密连接   center 为中间紧密连接  space-around 为环绕 space-between 为上下无边距 中间分散<br>
+<style>
+    .box {
+        width: 500px;
+        height: 500px;
+        border: 2px solid red;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    .box > div {
+        width: 100px;
+        height: 100px;
+        border: 2px dashed black;
+
+    }
+</style>
+<div class="box">
+    <div class="box1">111</div>
+    <div class="box1">222</div>
+    <div class="box1">333</div>
+    <div class="box1">444</div>
+    <div class="box1">555</div>
+    <div class="box1">666</div>
+    <div class="box1">777</div>
+    <div class="box1">888</div>
+    <div class="box1">111</div>
+    <div class="box1">222</div>
+    <div class="box1">333</div>
+    <div class="box1">444</div>
+    <div class="box1">555</div>
+    <div class="box1">666</div>
+    <div class="box1">777</div>
+    <div class="box1">888</div>
+
+</div>
+</body>
+</html>
