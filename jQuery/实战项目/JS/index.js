@@ -20,7 +20,6 @@ function getInfo(){
         data:{id:id},
         headers:{authorization:token},
         success(res){
-            console.log(res);
             if(res.code!==1){
                 $('.off').addClass('active')
                 $('.on').removeClass('active')
@@ -37,11 +36,12 @@ function getInfo(){
 $('button.self').on('click',function (){
     window.location.href = './self.html'
 })
-console.log(id);
 // 退出登录
 $('button.logout').on('click',function (){
-    $.get('https://localhost:8888/users/logout',{id:id},res =>{
+    console.log(id);
+    $.get('http://localhost:8888/users/logout',{ id : id },res =>{
         // 退出刷新页面
+        console.log(res);
         window.location.reload()
     })
 })

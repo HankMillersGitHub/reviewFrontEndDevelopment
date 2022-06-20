@@ -28,6 +28,7 @@ img {
     background-color: skyblue;
     margin: 0 auto;
     line-height: 50px;
+    /*主轴对齐方式*/
     justify-content: center;
     align-items: center;
     font-size: 30px;
