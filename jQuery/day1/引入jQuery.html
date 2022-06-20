@@ -37,8 +37,98 @@
           3.1.1 css()获取元素     $('div').css('要获取的样式名称')  可以获取元素的所有样式 返回值是所愿样式的样式值
           3.1.2 css()设置元素     $('div').css('样式,样式值')  可以获取元素的所有样式
           3.1.2 css()批量设置设置元素     $('div').css({所有需要设置的样式})  可以获取元素的所有样式
-   *
-    * */
+   *    4. 操作元素属性
+          4.1.1 attr() 获取元素属性  $('div').attr('hello') 获取被选中元素的hello属性
+          4.1.2 attr() 设置元素属性  $('div').attr('a',100) 设置被选中元素的a属性为100
+             keypoint 一般用于操作自定义属性  attr操作的所有属性都会直接出现在元素的标签上
+          4.1.3 removeAttr()  删除元素属性  $('div').removeAttr('hello')  删除被选中元素的hello属性
+          keypoint -----------------------------------------------------------------------
+          4.2.1 prop()  获取元素属性  $('div').prop('id')  获取被选中元素的id
+          4.2.2 prop()  设置元素属性  $('div').prop('id','container')   设置被选中的元素的原生属性id为container
+          4.2.3 removeProp()  删除元素属性  $('div').removeProp('hello')  删除hello属性
+             keypoint 当prop设置元素的原生属性时  会直接响应在元素标签上  当prop设置元素自定义属性时，不会直接响应在元素标签身上   会响应在元素对象身上
+             keypoint prop方法不能获取元素标签身上的自定义属性，只能获取到prop方法自己设置的自定义属性
+             keypoint removeProp方法不能删除原生属性  只能删除由prop设置的自定义属性
+        5. 获取元素尺寸
+        keypoint 不管该元素是否隐藏  都能获取到相应值  不管盒子模型是什么状态 拿到的尺寸区域不变
+          5.1 width()  height()  获取到的是元素内容区域的尺寸
+          5.2 innerWidth() innerHeight()  获取到的是元素内容区域加内边距的尺寸
+          5.3 outerWidth() outerHeight()  获取到的是元素除外边距以外的尺寸
+          5.4 outerWidth(true) outerHeight(true) 获取到的包括外边距的尺寸
+        6. 获取元素偏移量
+          6.1 offset() 获取元素相对于页面左上角的坐标  $('div').offset()
+            keypoint 返回值是一个对象数据类型
+          6.2 position() 获取元素的定位位置  $('div').position()
+            keypoint 如果设置的是right和bottom会自动换算成left和top
+        7. 事件绑定
+          7.1 on()
+            7.1.1 基础绑定事件  $('div').on('click',function(){console.log('helloWorld')})
+            7.1.2 事件委托绑定事件  $('div').on('click','p',function(){console.log('helloWorld')})
+                keypoint 吧事件绑定给div元素  当你在div内的p元素触发事件时，会执行事件
+            7.1.3 批量绑定事件  $('div').on({
+                                            click:function(){console.log('123')}
+                                            mouseover:function(){console.log('123')}
+                                            })
+          7.2 one()  只能触发一次
+            7.2.1 基础绑定事件  $('div').one('click',function(){console.log(‘123’)})
+            7.2.2 事件委托  $('div').one('click','p',function(){console.log(‘123’)})
+            7.2.3 批量绑定  $('div').one({
+                                            click:function(){console.log('123')}
+                                            mouseover:function(){console.log('123')}
+                                            })
+          7.3 hover() $('div').hover(function(){console.log('123')},function(){console.log('123')})
+            keypoint 当只设置一个事件时  移入移出都会触发这个事件
+          7.4 常用事件函数
+            click() mouseover() mouseout() change()
+        8. off() 事件解绑
+          8.1 $('div').off('click')  会把div所有的点击事件全都解除绑定
+          8.2 $('div').off('click',handlerB)  会把div的hanlerB事件处理函数解绑
+        9. trigger() 事件触发
+          9.1 $('div').trigger('click')  使用代码的方式触发事件
+        10. jquery基本动画
+          10.1 show()  显示  $('div').show(1000,linear,function(){console.log('over')})
+          10.2 hide()  隐藏$('div').hide(1000,linear,function(){console.log('over')})
+          10.3 toggle() 切换  本身如果是显示的就隐藏  反之  $('div').toggle(1000,linear,function(){console.log('over')})
+          keypoint 以上三个函数有三个共同的参数  第一个表示运动时间 第二个表示运动曲线 第三个表示运动结束的回调函数
+        11. jquery折叠动画  只纵向折叠
+          11.1 slideDown()  $('div').slideDown(1000,linear,function(){console.log('end')})
+          11.2 slideUp()  $('div').slideUp(1000,linear,function(){console('end')})
+          11.3 slideToggle()  $('div').slideToggle(1000,linear,.function(){console('end')})
+        12. jquery渐隐渐显动画
+          12.1 fadeIn()  $('div').fadeIn(1000,linear,function(){console.log('end')})
+          12.2 fadeOut()  $('div').fadeOut(1000,linear,function(){console.log('end')})
+          12.3 fadeToggle()  $('div').fadeToggle(1000,linear,function(){console.log('end')})
+          12.4 fadeTo()  $('div').fadeTo(1000,0.5,linear,function(){console.log('end')})
+            keypoint fadeTo第二个参数是指定透明度
+        13. jquery综合动画
+          13.1  animate()  $('div').animate({width:100,height:100},1000,linear.function(){console.log('hello')})
+            keypoint 四个参数  第一个是要运动的参数  第二个是运动时间第三个是运动类型 第四个是运动结束的回调函数
+            keypoint 颜色相关和transform相关的样式不能运动
+        14. jquery结束动画
+          14.1 stop() 当任何一个元素执行stop方法以后 会立即结束当前运动 运动到什么地方就结束在什么地方
+            $('div').stop().toggle(1000,linear,function(){console.log('end')})
+          14.2 finish()  结束当前运动直接去动画结束位置
+            $('div').finish().toggle(1000,linear,function(){console.log('end')})
+        15. ajax请求
+            keypoint 因为发送ajax请求不是操作DOM 所以它的使用不需要以来选择器获取元素 语法$.ajax({本次发送ajax配置})
+            1. url 必填  请求地址
+            2. method 选填 默认GET 请求方式
+            3. data 选填 默认是'' 表示携带给后端的参数
+            4. async 选填 默认是true 表示是否异步
+            5. success 选填  表示请求成功的回调函数
+            6. error 选填 表示请求失败的回调函数
+          15.1  $.ajax({
+                    url:'http://www.baidu.com',
+                    method:'GET',
+                    async:false,
+                    data:{name:'mzh',age:18},
+                    success:function(res){console.log(res)},
+                    error:function(res){console.log('error')}
+                    })
+
+
+*/
+
     $('div').toggleClass('a');
 
 </script>
