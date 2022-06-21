@@ -10,10 +10,11 @@
 </head>
 <body>
 <div id="box">
-    <input type="text" @input="handleInput" v-model="mytext">
+    <input type="text" v-model="mytext">
     <ul>
-        <li v-for="item in list">{{item}}</li>
+        <li v-for="item in test()">{{item}}</li>
     </ul>
+
 </div>
 <script>
     var vm = new Vue({
@@ -21,14 +22,10 @@
         data: {
             mytext: '',
             list: ['111', '222', '333', '444', '555'],
-            originList: ['111', '222', '333', '444', '555'],
-
         },
-        methods: {
-            handleInput() {
-                // aa includes 方法中只能筛选字符型数据
-                this.list = this.originList.filter(item => item.includes(this.mytext))
-
+        methods:{
+            test(){
+                return this.list.filter(item=>item.includes(this.mytext))
             }
         }
     })

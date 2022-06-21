@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+        {{count}}
+        <button @click="handleClick()">函数表达式</button>
+        <button @click="handleclick">=函数名</button>
+        <button @click="count++">直接写表达式</button>
+    <input type="text" @input="handleInput($event,1)">
+<!--    事件修饰符-->
+    <ul @click.self="handleUlClick">
+        <li @click.stop="handleLiClick"></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el:'#box',
+        data:{
+            count:1
+        },
+        methods:{
+            handleClick(){
+                this.count++;
+            },
+            handleclick(evt){
+                this.count++;
+                console.log(evt.target);
+                // 当函数被调用时 不加小括号  能通过evt获取事件源
+            },
+            // handleInput(evt){
+            //     console.log(evt.target.value);
+            //     // 当函数被调用时 不加小括号  能通过evt获取事件源
+            // //    同样可以获取输入框中的数据
+            // //    如果需要传参数  可以将$event写在第一个实参的位置
+            // }
+            handleInput(evt,a) {
+                console.log(a);
+                console.log(evt.target.value);
+            },
+            handleUlClick() {
+                console.log('ul');
+
+            },
+            handleLiClick() {
+                console.log('li');
+                //    阻止事件冒泡传播
+                // evt.stopPropagation()
+            }
+        }
+    })
+</script>
+</body>
+</html>
