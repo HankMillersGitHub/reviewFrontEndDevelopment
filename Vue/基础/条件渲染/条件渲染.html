@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>条件渲染</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <h2>订单状态</h2>
+<!--    template标签不会破坏原有的DOM结构-->
+    <template>
+        <ul>
+            <li v-for="(data,index) in list">{{data.title}}--{{index}}</li>
+        </ul>
+    </template>
+
+</div>
+<script>
+    new Vue({
+        el: '#box',
+        data: {
+            list: [
+                {
+                    title: "1111",
+                    status: 0
+                },
+                {
+                    title: "2222",
+                    status: 1
+                },
+                {
+                    title: "3333",
+                    status: 2
+                },
+                {
+                    title: "4444",
+                    status: 3
+                },
+
+            ]
+
+
+        },
+        methods: {},
+
+    })
+</script>
+</body>
+</html>

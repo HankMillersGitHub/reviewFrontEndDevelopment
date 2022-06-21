@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Doc|ument</title>
+
+    <script src="../../../vue.next.js"></script>
+</head>
+<body>
+
+<div id="box">
+    {{myname}}
+    <div :class="classObj">动态添加属性值</div>
+    <button @click="handleClick()">add</button>
+</div>
+<script>
+    var obj = {
+        // 函数式的写法  return之后的相当于之前的data
+        data() {
+            return {
+                myname: 'mzh',
+                classObj:{aa:true}
+            }
+        },
+        methods:{
+            handleClick(){
+                this.classObj.bb = true
+            }
+        }
+    }
+    Vue.createApp(obj).mount("#box")
+</script>
+</body>
+</html>

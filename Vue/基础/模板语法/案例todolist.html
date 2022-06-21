@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="mytext"/>
+    <button @click="handleAdd()">add</button>
+    <ul v-if="list.length">
+        <li v-for="(data,index) in list">{{data}}--{{index}}
+            <button @click = 'handleDel(index)'>del</button>
+        </li>
+    </ul>
+    <div v-if="!list.length">啥也没了</div>
+    <div v-html="mycode"></div>
+
+</div>
+<script>
+    /*
+    * v-bind
+    * v-if
+    * v-show
+    * v-on
+    * v-for
+    * v-model
+    * v-html
+    * */
+    new Vue({
+        el:'#box',
+        data:{
+            list:[111,111,111,111],
+            mytext:"",
+            mycode:'<a href="http://www.baidu.com">百度</a>'
+        },
+        methods:{
+            handleAdd(){
+                if(!this.mytext){
+                    console.log(1);
+                }else{
+                    this.list.push(this.mytext);
+                    this.mytext = ''
+                }
+
+            },
+            handleDel(index){
+                    this.list.splice(index,1);
+            }
+        }
+    })
+</script>
+</body>
+</html>

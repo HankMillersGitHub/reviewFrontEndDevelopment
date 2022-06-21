@@ -20,7 +20,7 @@
         // For CommonJS and CommonJS-like environments where a proper `window`
         // is present, execute the factory and get jQuery.
         // For environments that do not have a `window` with a `document`
-        // (such as Node.js), expose a factory as module.exports.
+        // (such as Node没学完.js), expose a factory as module.exports.
         // This accentuates the need for the creation of a real `window`.
         // e.g. var jQuery = require("jquery")(window);
         // See ticket #14549 for more info.
@@ -4222,9 +4222,9 @@
     var acceptData = function( owner ) {
 
         // Accepts only:
-        //  - Node
-        //    - Node.ELEMENT_NODE
-        //    - Node.DOCUMENT_NODE
+        //  - Node没学完
+        //    - Node没学完.ELEMENT_NODE
+        //    - Node没学完.DOCUMENT_NODE
         //  - Object
         //    - Any
         return owner.nodeType === 1 || owner.nodeType === 9 || !( +owner.nodeType );
@@ -6893,7 +6893,7 @@
         // setting or getting the value
         cssProps: {},
 
-        // Get and set the style property on a DOM Node
+        // Get and set the style property on a DOM Node没学完
         style: function( elem, name, value, extra ) {
 
             // Don't set styles on text and comment nodes

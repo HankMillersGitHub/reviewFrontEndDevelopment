@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class&style</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <div :class="classObj">动态切换class-1-对象方法</div>
+    <div :class="classArr">动态切换class-1-数组方法</div>
+    <div :style="styleObj">动态切换style-1-对象方法</div>
+    <div :style="styleArr">动态切换style-1-数组方法</div>
+</div>
+<script>
+   var vm = new Vue({
+        el:'#box',
+        data:{
+            classObj:{
+                aa:true,
+                bb:true,
+                cc:true
+            },
+            classArr:['aa','bb','cc'],
+            styleObj:{
+                backgroundColor:'red',
+
+
+            },
+            styleArr:[{backgroundColor:'red'}]
+
+        },
+        // 新增状态的键值 vue2解决办法 vue.set(对象，属性，true)
+
+    })
+
+</script>
+</body>
+</html>
