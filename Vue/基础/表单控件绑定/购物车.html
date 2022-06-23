@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+    <style>
+        li {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        li img {
+            width: 100px;
+        }
+
+        li > div > button {
+
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        li > div > input {
+            width: 20px;
+            height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <div>
+        <input type="checkbox" @change="handleAll" v-model="isChecked">全选/全不选
+        <ul>
+            <li v-for="(item,index) in goods" :key="item.id">
+                <div><input type="checkbox" v-model="checkedList" :value="item" @change='handleSelect'></div>
+                <img :src="item.pic" alt="">
+
+                <div>
+                    <div>{{item.name}}</div>
+                    <div>￥{{item.price}}</div>
+                </div>
+
+                <div>
+                    <button @click="item.number--" :disabled="item.number ===1">-</button>
+                    <span>{{item.number}}</span>
+                    <button @click="item.number++" :disabled="item.number===item.limit">+</button>
+                </div>
+                <div>
+                    <button @click="handleDel(index)">删除</button>
+                </div>
+
+
+            </li>
+        </ul>
+        <div>总金额：{{ sum() }}</div>
+        {{checkedList}}
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#box',
+        data: {
+            goods: [{name: '商品1', limit: 10, price: 10, number: 1, id: 1, pic: 'https://v3.cn.vuejs.org/logo.png'},
+                {name: '商品2', limit: 15, price: 20, number: 2, id: 2, pic: 'https://v3.cn.vuejs.org/logo.png'},
+                {name: '商品3', limit: 20, price: 30, number: 3, id: 3, pic: 'https://v3.cn.vuejs.org/logo.png'}],
+            checkedList: [],// 勾选的购物车数据
+            isChecked: false
+
+        },
+        methods: {
+            //    累加计算checkedList数组的价格*数据
+            sum() {
+                var total = 0;
+                this.checkedList.forEach(item => {
+                    total += item.price * item.number;
+                })
+                return total;
+            },
+            // 全选
+            handleAll() {
+
+                if (this.isChecked === true) {
+                    this.isChecked = false;
+                    this.checkedList = this.goods
+                } else if (this.isChecked === false) {
+                    this.checkedList = []
+                }
+
+            },
+            // 删除
+            handleDel(index) {
+                // foreach的方式
+                // this.checkedList.forEach(res => {
+                //     if (res.id === this.goods[index].id) {
+                //         this.checkedList.splice(res, 1)
+                //     }
+                //
+                // })
+                // filter方式
+                this.checkedList = this.checkedList.filter(res => res.id !== this.goods[index].id)
+                this.goods.splice(index, 1)
+
+            },
+            //    取消一个  全选不选
+            handleSelect() {
+                // this.checkedList
+                if (this.checkedList.length === this.goods.length) {
+                    this.isChecked = true
+                } else {
+                    this.isChecked = false
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -21,6 +21,9 @@
         <li></li>
         <li></li>
     </ul>
+<!--    按键修饰符-->
+    <input type="text" @keyup.enter="handleKeyup">
+<!--    .esc  .enter .delete .left .right-->
 </div>
 <script>
     new Vue({
@@ -53,6 +56,11 @@
             },
             handleLiClick() {
                 console.log('li');
+                //    阻止事件冒泡传播
+                // evt.stopPropagation()
+            },
+            handleKeyup(evt) {
+                console.log(evt.keyCode);
                 //    阻止事件冒泡传播
                 // evt.stopPropagation()
             }

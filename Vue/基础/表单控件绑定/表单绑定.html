@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单绑定</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="input">{{input}}
+    <textarea name="" id="" cols="30" rows="10" v-model="textArea"> </textarea>
+    {{textArea}}
+    <div>
+        用户名：<input type="text" v-model="input">
+        <input type="checkbox" v-model="isChecked" @click="isChecked =!isChecked">记住用户名
+        <button @click="handleLogin">登录</button>
+    </div>
+    <div>
+        <h2>
+            完善信息
+        </h2>
+        <label><input type="checkbox" v-model="checkedList" value="bask">篮球</label>
+        <label><input type="checkbox" v-model="checkedList" value="foot">足球</label>
+        <label><input type="checkbox" v-model="checkedList" value="code">敲代码</label>
+
+{{checkedList}}
+    </div>
+    <div>
+        <h2></h2>
+        <label><input type="radio" v-model="sex" value="1">男</label>
+            <label><input type="radio" v-model="sex" value="0">女</label>
+
+    </div>
+</div>
+<script>
+    new Vue({
+        el:'#box',
+        data:{
+            textArea:'',
+            input: localStorage.getItem('username'),
+            isChecked:false,
+            checkedList:['bask','code'],
+            sex: '',
+        },
+        methods:{
+            handleLogin(){
+                if(this.isChecked){
+                    localStorage.setItem('username',this.input)
+                }else{
+                    console.log(2);
+
+                }
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
