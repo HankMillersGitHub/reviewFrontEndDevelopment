@@ -27,6 +27,14 @@
             test(){
                 return this.list.filter(item=>item.includes(this.mytext))
             }
+        },
+        watch:{
+            mytext(newValue){
+                console.log(newValue);
+                setTimeout(()=>{
+                  this.list  this.list.filter(item=>item.includes(newValue))
+                },2000)
+            }
         }
     })
 

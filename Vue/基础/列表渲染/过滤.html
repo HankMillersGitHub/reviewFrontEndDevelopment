@@ -10,9 +10,9 @@
 </head>
 <body>
 <div id="box">
-    <input type="text" @input="handleInput" v-model="mytext">
+    <input type="text" v-model="mytext">
     <ul>
-        <li v-for="item in list">{{item}}</li>
+        <li v-for="item in comlist" :key="item">{{item}}</li>
     </ul>
 </div>
 <script>
@@ -30,8 +30,16 @@
                 this.list = this.originList.filter(item => item.includes(this.mytext))
 
             }
+        },
+        computed:{
+            comlist(){
+               return this.list = this.originList.filter(item =>
+                   item.includes(this.mytext))
+
+            }
         }
     })
+
 
     /*
     * 数组更新检测方法

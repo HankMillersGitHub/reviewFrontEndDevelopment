@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+{{myUpName}}
+</div>
+<script>
+    /*
+    * 计算属性 是为了防止模板过重难以维护  负责逻辑放在计算属性中写
+    * 计算属性和函数的区别：
+    *   1. 计算属性是为了计算某个结果  多次调用只执行一次
+    *   2. 函数是为了处理事件  多次调用就会多次执行
+    * 但是计算属性要立即得到结果  所以当数据是异步的  就不好用了  所以要引入watch
+    * */
+    new Vue({
+        el:'#box',
+        data:{
+            myname:"mazhonghao"
+        },
+        methods:{
+
+        },
+        computed:{
+            myUpName(){
+                return this.myname.substring(0,1).toUpperCase() + this.myname.substring(1)
+            }
+        }
+    })
+</script>
+</body>
+</html>

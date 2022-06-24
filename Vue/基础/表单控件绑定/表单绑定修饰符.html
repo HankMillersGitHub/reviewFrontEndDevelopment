@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单修饰符</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+<!--    aa lazy修饰符 失焦更新-->
+    <input type="text" v-model.lazy="mytext">{{mytext}}
+<!--    aa .number修饰符  转换数字-->
+    <input type="number" v-model.number="myage">{{myage}}
+<!--    aa .trim修饰符  去除首尾空格-->
+    <input type="username" v-model.trim="myname">{{myname}}
+</div>
+<script>
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            mytext:'',
+            myage:0,
+            myname:''
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

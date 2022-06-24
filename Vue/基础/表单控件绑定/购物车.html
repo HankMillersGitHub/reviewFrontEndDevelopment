@@ -57,7 +57,7 @@
 
             </li>
         </ul>
-        <div>总金额：{{ sum() }}</div>
+        <div>总金额：{{ comsum }}</div>
         {{checkedList}}
     </div>
 </div>
@@ -68,12 +68,13 @@
             goods: [{name: '商品1', limit: 10, price: 10, number: 1, id: 1, pic: 'https://v3.cn.vuejs.org/logo.png'},
                 {name: '商品2', limit: 15, price: 20, number: 2, id: 2, pic: 'https://v3.cn.vuejs.org/logo.png'},
                 {name: '商品3', limit: 20, price: 30, number: 3, id: 3, pic: 'https://v3.cn.vuejs.org/logo.png'}],
-            checkedList: [],// 勾选的购物车数据
+            checkedList: [],// aa 勾选的购物车数据
             isChecked: false
 
         },
         methods: {
-            //    累加计算checkedList数组的价格*数据
+            //    aa 累加计算checkedList数组的价格*数据
+            // 方法形式计算总价值
             sum() {
                 var total = 0;
                 this.checkedList.forEach(item => {
@@ -94,27 +95,39 @@
             },
             // 删除
             handleDel(index) {
-                // foreach的方式
+                // aa foreach的方式
                 // this.checkedList.forEach(res => {
                 //     if (res.id === this.goods[index].id) {
                 //         this.checkedList.splice(res, 1)
                 //     }
                 //
                 // })
-                // filter方式
+                // aa filter方式
                 this.checkedList = this.checkedList.filter(res => res.id !== this.goods[index].id)
                 this.goods.splice(index, 1)
+                this.handleSelect()
 
             },
             //    取消一个  全选不选
             handleSelect() {
                 // this.checkedList
-                if (this.checkedList.length === this.goods.length) {
-                    this.isChecked = true
-                } else {
+                if (this.checkedList.length !== this.goods.length) {
                     this.isChecked = false
+                } else {
+                    this.isChecked = true
                 }
-            }
+            },
+
+        },
+        computed:{
+            // 计算属性计算总价值
+            comsum() {
+                var total = 0;
+                this.checkedList.forEach(item => {
+                    total += item.price * item.number;
+                })
+                return total;
+            },
         }
     })
 </script>

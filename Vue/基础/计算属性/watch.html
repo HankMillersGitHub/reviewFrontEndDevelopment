@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表渲染</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="wactchList">
+    <ul>
+        <li v-for="item in list" :key="item">{{item}}</li>
+    </ul>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#box',
+        //状态
+        data: {
+            wactchList: '',
+            list: ['111', '222', '333', '444', '555'],
+            originList: ['111', '222', '333', '444', '555'],
+
+        },
+        // 方法
+        methods:{
+
+        },
+        // 计算属性
+        computed:{
+
+        },
+        // 监听
+        watch:{
+            wactchList(newValue){
+                console.log(1);
+                setTimeout(()=>{
+                    this.list = this.originList.filter(item => item.includes(newValue))
+                },2000)
+            }
+        }
+    })
+
+/*
+* data computed methods watch的区别
+*   1. data  状态  被拦截
+*   2. 方法  事件绑定 逻辑计算  可以不return 没有缓存
+*   3. 计算属性（重视结果）  解决模板过重  必须有返回值  只求结果  有缓存 只能同步
+*   4. watch 重视过程  监听一个值的变化  不要返回值  异步同步都可以
+*
+*
+* */
+</script>
+</body>
+</html>
