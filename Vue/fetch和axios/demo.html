@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/vue.js"></script>
+    <script src="../../lib/axios.js"></script>
+</head>
+
+<style>
+    *{
+        list-style: none;
+    }
+</style>
+<body>
+    <div id="box">
+        <button @click="handleCli">提交</button>
+        <ul>
+            <li v-for="(data,index) in moviesList" :key="data.filmsId">
+                {{data.name}}
+                <div class="poster">
+                    <img style="width: 200px;" :src="data.poster" alt="">
+                </div>
+
+                <div class="category">{{data.category}}</div>
+                <div class="director">{{data.director}}</div>
+
+                <div class="nation">{{data.nation}}</div>
+
+                <div class="synopsis">{{data.synopsis}}</div>
+
+                <div class="item">{{data.item.name}}</div>
+
+                <div class="actors">
+                    <ul>
+                        <li v-for="data in actorList[index]">{{data.name}}</li>
+                    </ul>
+
+                </div>
+
+
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                moviesList: [],
+                actorList: []
+            },
+            methods: {
+                handleCli() {
+                    axios.get("/Vue/fetch和axios/json/movie.json")
+                        .then((res, index) => {
+
+                            this.moviesList = res.data.data.films
+                            for (let i = 0; i < res.data.data.films.length; i++) {
+                                this.actorList[i] = res.data.data.films[i].actors
+                            }
+                            console.log(this.moviesList)
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,13 +1,103 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../lib/axios.js"></script>
+    <script src="../../lib/vue.js"></script>
+
     <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+            padding: 0%;
+            margin: 0;
+
+        }
+    </style>
 </head>
+
 <body>
-<!--fetch是基于原生XMLHttpRequest对象实现数据请求的 同时也是基于promise实现链式调用-->
+    <!--fetch是基于原生XMLHttpRequest对象实现数据请求的 同时也是基于promise实现链式调用
+    fetch的兼容性不好
+-->
+    <div id="box">
+        <button @click="handleBut">but</button>
+        <header>卖座电影</header>
+
+        <ul>
+            <li v-for="data in moviesList" :key="data.filmId">{{data.name}}
+                <img style="width: 200px;" :src="data.poster" alt="">
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                moviesList: [],
+                actorList:[]
+            },
+            methods: {
+                handleBut() {
+                    fetch("/Vue/fetch和axios/json/movie.json")
+                        .then(res => res.json())
+                        .then(res => {
+                            console.log(res.data)
+                            this.moviesList = res.data.films
+                            this.actorList = res.data.actors;
+
+                        })
+                    // // fetch的get请求
+                    // fetch("/Vue/fetch和axios/json/test.json")
+                    // .then(res=>{
+                    //     // 这里的res拿到的是状态码 响应头拿不到真正的数据
+                    //     return res.json()
+                    // })
+                    // .then(res=>{
+                    //     console.log(res);
+                    // })
+                    // .catch(err=>{
+                    //     console.log(err)
+                    // })
+
+
+                    // fetch的post请求1
+                    // fetch("/Vue/fetch和axios/json/test.json",
+                    // {
+                    //     methods:'POST',
+                    //     // 数据的编码格式
+                    //     headers:{
+                    //         "Content-Type":"application/x-www-form-urlencoded"
+                    //     }
+                    // }).then(res=>res.json())
+                    // .then(res=>{console.log(res)})
+
+
+
+                    // fetch的post请求2
+                    // fetch("/Vue/fetch和axios/json/test.json",
+                    // {
+                    //     methods:'POST',
+                    //     // 数据的编码格式
+                    //     headers:{
+                    //         "Content-Type":"application/json"
+                    //     },
+                    //     body: JSON.stringify({
+                    //         "name":"mzh",
+                    //         "age":19,
+                    //         "sex":"男"
+                    //     })
+                    // }).then(res=>res.json())
+                    // .then(res=>{console.log(res)})
+                },
+
+            }
+        })
+    </script>
 </body>
+
 </html>

@@ -6,21 +6,34 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>axios</title>
-    <script src="../../vue.js">
+    <script src="../../vue.js"></script>
+    <script src="../../lib/axios.js"></script>
 
-    </script>
+    
 </head>
 <body>
 <div id="box">
-
+    <button @click="handleCli">点击</button>
+    <ul>
+        <li v-for="data in moviesList">{{data.name}}</li>
+    </ul>
 </div>
 <script>
     new Vue({
         el: '#box',
-        data: {},
-        methods: {},
+        data: {
+            moviesList:[]
+        },
+        methods: {
+            handleCli(){
+                axios.get("/Vue/fetch和axios/json/movie.json").then(res=>{this.moviesList = res.data.data.films})
+            }
+        },
         computed: {},
-        watch: {}
+        watch: {},
+        axios:{
+
+        }
     })
 </script>
 </body>
