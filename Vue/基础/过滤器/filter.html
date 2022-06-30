@@ -19,33 +19,19 @@
     <div id="box">
         <button @click="handleCli">提交</button>
         <ul>
-            <li v-for="(data,index) in moviesList" :key="data.filmsId">
-                {{data.name}}
-                <div class="poster">
-                    <img style="width: 200px;" :src="data.poster" alt="">
-                </div>
-
-                <div class="category">{{data.category}}</div>
-                <div class="director">{{data.director}}</div>
-
-                <div class="nation">{{data.nation}}</div>
-
-                <div class="synopsis">{{data.synopsis}}</div>
-
-                <div class="item">{{data.item.name}}</div>
-
-                <div class="actors">
-                    <ul>
-                        <li v-for="data in actorList[index]">{{data.name}}</li>
-                    </ul>
-
-                </div>
-
-
+            <li v-for="(data,index) in moviesList" :key="data.filmsId">{{data.name}}
+             <img style="width: 200px;" :src="data.poster | imgFilter1 | imgFilter2" alt="">
             </li>
         </ul>
     </div>
     <script>
+        // 每一个图片地址经过加工返回给页面  类似映射   Vue3不支持过滤器
+        Vue.filter("imgFilter1",(url)=>{
+            return url.replace('w.h/','')
+        })
+        Vue.filter("imgFilter2",(url)=>{
+            return url + '@1l_1e_1c_128w_180h'
+        })
         new Vue({
             el: '#box',
             data: {
@@ -61,7 +47,6 @@
                             for (let i = 0; i < res.data.data.films.length; i++) {
                                 this.actorList[i] = res.data.data.films[i].actors
                             }
-                            console.log(this.moviesList)
                         })
                 }
             }
