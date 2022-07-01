@@ -7,7 +7,25 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
-
+<style>
+    /* 动画 */
+    .mzh-enter-active{
+        animation: aaa 1.5s
+    }
+    .mzh-leave-active{
+        animation: aaa 1.5s reverse
+    }
+    @keyframes aaa {
+        0%{
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        100%{
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+</style>
 <script type="text/javascript" src="lib/vue.js"></script>
 </head>
 <body>
@@ -15,7 +33,14 @@
         <navbar>
           <button @click="isShow=!isShow">click</button>  
         </navbar>
-        <sidebar v-show="isShow"></sidebar>  
+        <!-- vue过渡效果 -->
+        <!-- <transition enter-active-class="mzh-enter" leave-active-class="mzh-leave">
+            <sidebar v-show="isShow"></sidebar>  
+        </transition> -->
+        <!-- 简易写法 -->
+        <transition name="mzh">
+            <sidebar v-show="isShow"></sidebar>  
+        </transition>
     </div>
     <script>
 
