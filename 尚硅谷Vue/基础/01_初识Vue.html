@@ -1,33 +1,49 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--    引入vue-->
     <script src="./../vue.js"></script>
     <title>Document</title>
 </head>
+
 <body>
 
-<!--
+    <!--
     1. 想让Vue工作，就必须创建一个Vue实例，而且要传入一个配置对象
     2. box容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法
     3. box容器里的代码被称为【Vue模板】
+    4. Vue实例和容器是一一对应的
+    5. 真是开发中只有一个Vue实例，并且会配合组件一起使用
+    6. {{xxx}}中的xxx要写成js表达式，并且xxx可以自动读取到data中的所有属性
+    7. 一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新
+    
+    ! 注意区分： js表达式 和 js代码（语句）
 -->
-<div id="box">
-{{text}}
-</div>
-<script>
-<!--    new Vue() 括号中写的是配置对象-->
-    new Vue({
-        //element
-        el:'#box', // 用于指定当前Vue实例为哪个容器服务
-        data:{ // data中存储数据  其中数据供el指定的容器使用
-            text:'hello world!!!'
-        }
-    })
-</script>
+    <div id="box">
+        {{text}}
+        <button @click="handleCli">改变</button>
+    </div>
+    <script>
+        // new Vue() 括号中写的是配置对象
+        // 容器和Vue实例一一对应
+        new Vue({
+            //element
+            el: '#box', // 用于指定当前Vue实例为哪个容器服务
+            data: { // data中存储数据  其中数据供el指定的容器使用
+                text: 'hello world!!!'
+            },
+            methods: {
+                handleCli() {
+                    this.name = '马中豪'
+                }
+            }
+        })
+    </script>
 </body>
+
 </html>

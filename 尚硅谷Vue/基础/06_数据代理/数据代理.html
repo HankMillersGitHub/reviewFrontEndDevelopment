@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回顾Object.defineproperty()</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+<script>
+    let sex = '男'
+    let person = {
+        name:'马中豪',
+        age:19,
+    }
+    Object.defineProperty(person,'sex',{
+        // value:'男',
+        // enumerable:true,//控制属性是否可以枚举  默认是false
+        // writable:true, // 控制属性是否可以被修改  默认是false
+        // configurable:true,// 控制属性是否可以被删除 默认是false
+        // 当有人调用person的sex属性时，get函数(getter)就会被调用，且返回值就是age的值
+        get (){
+            console.log(22222222);
+            return sex
+        },
+        // 当有人修改person的sex属性时，set函数(setter)就会被调用，且会受到修改的具体值
+        set(val) {
+            console.log(111111);
+            sex = val
+        }
+    })
+    console.log(person);
+</script>
+</body>
+</html>

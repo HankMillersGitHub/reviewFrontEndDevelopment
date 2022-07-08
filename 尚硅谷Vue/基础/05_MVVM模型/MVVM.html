@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../../vue.js">
+
+    </script>
+</head>
+<!--
+    MVVM模型
+        1. M：模型 （Model） ：data中的数据
+        2. V：试图（View）：模板代码
+        3. VM：试图（ViewModel）：Vue实例
+    观察发现：
+        1. data中所有的属性，最后都出现在了vm身上。
+        2. vm身上所有的属性及Vue原型上的所有属性，在Vue模板中都可以直接使用
+-->
+<body>
+    <div id="box">
+        <h1>工程师姓名：{{name}}</h1>
+        <h1>工程师年龄：{{age}}</h1>
+
+    </div>
+    <script>
+       const vm = new Vue({
+            el: "#box",
+            data: {
+                name: '马中豪',
+                age:19
+            }
+        })
+    </script>
+</body>
+
+</html>

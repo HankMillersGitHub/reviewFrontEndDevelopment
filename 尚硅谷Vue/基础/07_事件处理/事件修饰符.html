@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+    <style>
+        #box>div {
+            border: 1px solid red;
+        }
+
+        .box1 {
+            padding: 4px;
+            background-color: red;
+
+        }
+
+        .box2 {
+            padding: 4px;
+            background-color: yellow;
+
+        }
+
+        .list {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            overflow: auto;
+        }
+
+        .list>li {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        Vue中的事件修饰符
+            1. prevent：阻止默认事件
+            2. stop： 阻止事件冒泡
+            3. once： 事件只触发一次
+            4. capture： 使用事件的捕获模式
+            5. self： 只有event.target是当前操作的元素时才触发
+            6. passive：事件的默认行为立即执行，无需等待事件回调执行完毕
+     -->
+    <div id="box">
+        <h2>{{name}} 你好</h2>
+        <!-- 阻止默认事件 -->
+        <!-- <a href="http://www.baidu.com" @click.prevent="handleClick">点我提示信息</a> -->
+        <!-- 阻止事件冒泡 -->
+        <!-- <div @click="handleClick">
+            <button @click.stop="handleClick">点我提示信息</button>
+        </div> -->
+        <!-- 事件只触发一次 -->
+        <!-- <button @click.once="handleClick">点我提示信息</button> -->
+        <!-- 使用事件的捕获模式 -->
+        <!-- <div class="box1" @click.capture="handleMsg(1)">
+            div1
+            <div class="box2" @click="handleMsg(2)">
+                div2
+            </div>
+        </div> -->
+        <!-- 只有event.target是当前操作的元素时才触发 -->
+        <!-- <div @click.self="handleClick">
+            <button @click="handleClick">点我提示信息</button>
+        </div> -->
+        <!--  事件的默认行为立即执行，无需等待事件回调执行完毕-->
+        <ul class="list" @wheel.passive="demo">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <ul class="list" @scroll="demo">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                name: '马中豪',
+
+            },
+            methods: {
+                handleClick(e) {
+
+                    alert('你好，' + this.name);
+                },
+                handleMsg(msg) {
+                    console.log(msg)
+                },
+                demo() {
+                    for (let i = 0; i < 100000; i++) {
+                        console.log(i)
+                    }
+                    console.log(1111111111111)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
