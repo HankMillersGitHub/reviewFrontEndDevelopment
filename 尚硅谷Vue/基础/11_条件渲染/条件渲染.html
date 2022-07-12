@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        条件渲染
+            1. v-if
+                写法:
+                    1. v-if="表达式"
+                    2. v-else-if="表达式"
+                    3. v-else="表达式"
+                适用于:切换频率较低的场景
+                特点:不展示的DOM元素直接被移除
+                注意:v-if可以和V-else-if,v-else一起使用,但要求结构不能被打断
+            2. v-show
+                写法:v-show=表达式
+                适用于:切换频率较高的场景
+                特点:不展示的DOM元素未被移除,仅仅是使用样式隐藏掉
+            3. 备注:使用v-if时,元素可能无法获取到,而使用v-show一定可以获取到
+
+     -->
+    <div id="box">
+        <h2>当前n值为{{n}}</h2>
+        <button @click="handleCli">点我n++</button>
+
+        <!-- 使用v-show做条件渲染 -->
+        <h2 v-show='n%2 === 0'>欢迎你，{{name}}</h2>
+        <h2 v-show='n%2 !== 0'>欢迎你，{{name}}</h2>
+
+        <!-- 使用v-if做条件渲染 -->
+        <!-- <h2 v-if='n%2 !== 0'>欢迎你，{{name}}</h2> -->
+
+        <!-- 使用v-else-if和v-else -->
+        <div v-if="n === 1">马中豪1</div>
+        <div v-else-if="n === 2">马忠好2</div>
+        <div v-else-if="n === 3">马中豪3</div>
+        <div v-else>马中豪4</div>
+        <!-- v-if和template的配合使用 -->
+        <template v-if="n===1">
+            <h2>你好</h2>
+            <h2>马中豪</h2>
+            <h2>你好世界</h2>
+        </template>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                name: '马中豪',
+                isShow: true,
+                n: 0
+            },
+            methods: {
+                handleCli() {
+                    this.n += 1
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
