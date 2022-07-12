@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <h2>今天天气是{{infon}}</h2>
+        <button @click="handleCli">改变</button>
+    </div>
+    <script>
+
+        const vm = new Vue({
+            el: '#box',
+            data: {
+
+                weatherCode: true
+            },
+            methods: {
+                handleCli() {
+                    this.weatherCode = !this.weatherCode
+                }
+            },
+            computed: {
+                infon() {
+                    return this.weatherCode ? '凉爽' : '炎热'
+                }
+            },
+            watch: {
+                // 正常写法
+                // weatherCode: {
+                // immediate:true,
+                // deep:true,
+                // handler(newValue, oldValue) {
+                //     console.log('123', newValue, oldValue)
+                // }
+                // },
+                // 简写
+                // weatherCode(newValue, oldValue) {
+                //     console.log('123', newValue, oldValue)
+                // }
+
+            }
+
+        })
+        // 正常写法
+        // vm.$watch('weatherCode', {
+        //     // immediate:true,
+        //     // deep:true,
+        //     handler(newValue, oldValue) {
+        //         console.log('123', newValue, oldValue)
+        //     }
+        // })
+        // 简写
+        vm.$watch('weatherCode', function (newValue, oldValue) {
+            console.log('123', newValue, oldValue)
+
+        })
+    </script>
+</body>
+
+</html>
