@@ -10,14 +10,20 @@
 </head>
 
 <body>
-    <div id="box">
+    <!-- 
+        v-cloak指令（没有值）
+            1. 本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删除V-cloak属性
+            2. 使用CSS配合v-cloak可以解决网速慢时页面展示出插值语法的问题
 
+     -->
+    <div id="box">
+        <h2>{{name}}</h2>
     </div>
     <script>
         new Vue({
             el: '#box',
             data: {
-
+                name: '马中豪'
             }
         })
     </script>

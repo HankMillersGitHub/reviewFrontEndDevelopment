@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        vm的生命周期
+            1. 将要创建 ===> 调用beforeCreate函数
+            2. 创建完毕 ===> 调用Created函数
+            3. 将要挂载 ===> 调用beforeMount函数
+     (重要) 4. 挂载完毕 ===> 调用mounted函数
+            5. 将要更新 ===> 调用beforeUpdate函数
+            6. 更新完毕 ===> 调用updated函数
+     （重要）7. 将要销毁 ===> 调用beforeDestroy函数
+            8. 销毁完毕 ===> 调用destroyed函数
+
+     -->
+    <div id="box">
+        <h2>当前的n值是{{n}}</h2>
+        <button @click="add">点我n++</button>
+    </div>
+    <script>
+
+        new Vue({
+            el: '#box',
+            data: {
+                n: 1
+            },
+            methods: {
+                add() {
+                    this.n++
+                }
+            },
+            // Vue完成模板的解析并把初始的真实的DOM元素放入页面后（挂载完毕）调用mounted
+            mounted() {
+                setInterval(() => {
+                    this.opacity -= 0.01
+                    if (this.opacity <= 0) this.opacity = 1
+                }, 16)
+            },
+            beforeCreate() {
+                console.log(123)
+                // console.log(this)
+            },
+            created() {
+                console.log(this)
+            },
+            beforeMount() {
+                console.log(123)
+            },
+        })
+
+    </script>
+</body>
+
+</html>

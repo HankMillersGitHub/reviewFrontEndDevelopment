@@ -10,14 +10,22 @@
 </head>
 
 <body>
-    <div id="box">
+    <!-- 
+        v-pre指令
+            1. v-pre跳过其所在节点点的编译过程
+            2. 可利用它跳过：没有使用指令语法，没有使用插值语法的节点，会加快编译
 
+     -->
+    <div id="box">
+        <h2 v-pre>刚开始的值是123</h2>
+        <h2>加一之后的值是：{{name}}</h2>
+        <button @click="name++">点我n加一</button>
     </div>
     <script>
         new Vue({
             el: '#box',
             data: {
-
+                name: 1
             }
         })
     </script>
