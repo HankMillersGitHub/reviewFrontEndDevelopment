@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+        关于VueComponent:
+            1. boss组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的
+            2. 我们只需要写<boss></boss>或<boss/>，Vue解析时会帮我们创建boss组件的实例对象
+            3. 特别注意：每一调用Vue.extend,返回的都是一个全新的VueComponent！！！
+            4. 关于this指向：
+                1. 组件配置中
+                    data函数、methods中的函数、watch中的函数、computed中的函数 他们的this均是指向VueComponent实例对象
+                2. new Vue（）配置中
+                    data函数、methods中的函数、watchh中的函数、computed中的函数 他们的this均是Vue实例对象
+            5. VueComponent的实例对象，以后简称VC（也可称之为组件实例对象）
+            Vue的实例对象以后简称VM
+
+     -->
+    <div id="box">
+        <boss></boss>
+        <hello></hello>
+    </div>
+    <script>
+        const boss = Vue.extend({
+            template: `<div>
+            <h2>欢迎{{name}}</h2>
+            <h2>你今年{{age}}岁</h2>
+        </div>`,
+            data() {
+                return {
+                    name: '马中豪',
+                    age: 19
+                }
+            }
+        })
+        const hello = Vue.extend({
+            template: '<h2>{{msg}}</h2>',
+            data() {
+                return {
+                    msg: '你好世界'
+                }
+
+            }
+        })
+        new Vue({
+            el: '#box',
+            data: {
+
+            },
+            components: {
+                boss: boss,
+                hello
+            }
+        })
+    </script>
+</body>
+
+</html>

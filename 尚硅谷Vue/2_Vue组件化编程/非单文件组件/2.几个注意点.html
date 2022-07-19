@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        几个注意点
+            1. 关于组件名
+                一个单词组成：
+                    第一种写法（首字母小写）：boss
+                    第二种写法（首字母大写）：Boss
+                多个单词组成：
+                    第一种写法（kebab-case命名）：my-boss
+                    第二种写法（CamelCase命名）：MyBoss（需要Vue脚手架）
+                备注：
+                    1. 组件名尽可能回避HTML中已有的元素名称，例如h2 H2都不行
+                    2. 可以使用name配置项指定组件在开发者工具中呈现的名字
+            2. 关于组件标签
+                第一种写法：<boss></boss>
+                第二种写法：<boss/>
+                备注：不使用脚手架时，第二种写法会导致后续组件不能渲染
+            3. 一个简写方式
+                const school = Vue.extend(option) 可简写为：const school = option            
+
+
+     -->
+    <div id="box">
+        <boss></boss>
+        <bro></bro>
+    </div>
+    <script>
+        // 定义的简写
+        const bro = {
+            template: `<div>
+    <h2>老板名称：{{name}}</h2>
+    <h2>老板地址：{{address}}</h2>
+</div>`,
+            name: 'bro',
+            data() {
+                return {
+                    name: '张适旗',
+                    address: '山西临汾'
+                }
+            }
+        }
+        // 定义的完整写法
+        const boss = Vue.extend({
+            template: `<div>
+    <h2>老板名称：{{name}}</h2>
+    <h2>老板地址：{{address}}</h2>
+</div>`,
+            name: 'mzh',
+            data() {
+                return {
+                    name: '马中豪',
+                    address: '山西临汾'
+                }
+            }
+        })
+        new Vue({
+            el: '#box',
+            data: {
+
+            },
+            components: {
+                'boss': boss,
+                bro
+            }
+        })
+    </script>
+</body>
+
+</html>

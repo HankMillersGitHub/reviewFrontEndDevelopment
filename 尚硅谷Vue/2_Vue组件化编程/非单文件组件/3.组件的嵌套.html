@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+    </div>
+    <script>
+        // 定义bro组件
+        const bro = {
+            name: "zsq",
+            template: `<div>
+    <h2>my name is {{name}}</h2>
+    <h2>my boss is {{bossName}}</h2>
+
+</div>`,
+            data() {
+                return {
+                    name: '张适旗',
+                    bossName: "马中豪"
+                }
+            }
+        }
+        // 定义boss组件
+        const boss = {
+            name: "mzh",
+            template: `<div>
+    <h2>my name is {{name}}</h2>
+    <h2>i'm {{age}} years old</h2>
+    <zsq></zsq>
+</div>`,
+            data() {
+                return {
+                    name: '马中豪',
+                    age: 19
+                }
+            },
+            components: {
+                zsq: bro
+            }
+        }
+
+        const hello = Vue.extend({
+            template: `<h1>欢迎您{{name}}</h1>`,
+            data() {
+                return {
+                    name: '马中豪'
+                }
+            }
+        })
+
+        // 定义app组件
+        const app = Vue.extend({
+            components: {
+                boss,
+                hello
+            },
+            template: `
+            <div>
+                <boss></boss>
+                <hello></hello>
+                </div>
+            `
+        })
+        new Vue({
+            el: '#box',
+            template: "<app></app>",
+            components: {
+                app
+            },
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

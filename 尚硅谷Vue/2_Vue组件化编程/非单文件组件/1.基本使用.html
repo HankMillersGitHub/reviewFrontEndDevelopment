@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        Vue中使用组件的三大步骤
+            1. 定义组件（创建组件）
+            2. 注册组件
+            3. 使用组件（写组件标签）
+        1. 如何定义一个组件？
+            使用Vue.extend(option)创建，其中option和new Vue(option)时传入的那个option几乎一样，但是又一些区别
+                1. el不写，因为最终所有组件都要经过一个vm的管理，由vm中的el决定服务哪个容器
+                2. data必须写成函数 避免组件被复用时，数据存在引用关系
+            备注：使用template可以配置组件结构
+        2. 如何注册组件
+            1. 局部注册：靠new Vue的时候传入components选项
+            2. 全局注册：靠Vue.component('组件名',组件)
+        3. 编写组件标签
+            <组件名></组件名>
+
+
+     -->
+    <div id="box">
+        <!-- 第三步  编写组件标签 -->
+        <hello></hello>
+        <boss></boss>
+        <hr>
+        <bro></bro>
+    </div>
+    <div id="box1">
+        <hello></hello>
+    </div>
+    <script>
+        // 创建boss组件
+        const boss = Vue.extend({
+            // el: '#box',  // 一定不要写el配置项  最终所有组件都要被一个vm管理
+            template: `<div><h2>大哥名称{{bossName}}</h2>
+        <h2>大哥地址{{address}}</h2><button @click="showName">点我提示学校名</button></div>
+        `,
+            data() {
+                return {
+                    bossName: '马仲豪',
+                    address: '山西临汾'
+                }
+            },
+            methods: {
+                showName() {
+                    alert(this.bossName)
+                }
+            }
+        })
+        const bro = Vue.extend({
+            template: `<div><h2>小弟姓名{{broName}}</h2>
+        <h2>小弟年龄{{age}}</h2></div>`,
+            data() {
+                return {
+                    broName: '王俊龙',
+                    age: 18,
+                }
+            }
+        })
+
+        const hello = Vue.extend({
+            template: `<h1>你好啊{{name}}</h1>`,
+            data() {
+                return {
+                    name: '马仲豪'
+                }
+            }
+        })
+
+        // 全局注册
+        Vue.component('hello', hello)
+        new Vue({
+            el: '#box',
+            // 注册组件(局部注册)
+            components: {
+                boss,
+                bro
+            }
+        })
+        new Vue({
+            el: '#box1',
+        })
+    </script>
+</body>
+
+</html>
