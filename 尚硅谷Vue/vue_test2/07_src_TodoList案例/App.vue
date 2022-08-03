@@ -25,24 +25,14 @@ export default {
   name: "App",
   data() {
     return {
-      // ! 解决刚进入时是空数组的进阶方法
-      todos: JSON.parse(localStorage.getItem("todos")) || [],
+      todos: [
+        { id: "0001", name: "吃饭", done: true },
+        { id: "0002", name: "睡觉", done: false },
+        { id: "0003", name: "抽烟", done: true },
+        { id: "0004", name: "喝酒", done: false },
+      ],
     };
   },
-  watch: {
-    todos: {
-      deep: true,
-      handler(value) {
-        localStorage.setItem("todos", JSON.stringify(value));
-      },
-    },
-  },
-  // ! 解决刚进入时是空数组的原始方法
-  // created() {
-  //   if (!this.todos) {
-  //     this.todos = [];
-  //   }
-  // },
   methods: {
     // 添加todo
     addTodo(todoObj) {
