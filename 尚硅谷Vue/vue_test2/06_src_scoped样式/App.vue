@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title">123</h1>
-    <Boss></Boss>
+    <Boss :getName="getName"></Boss>
     <hr />
     <Bor></Bor>
   </div>
@@ -15,6 +15,11 @@ export default {
     return {
       msg: "你的老大是马中豪",
     };
+  },
+  methods: {
+    getName(value) {
+      console.log(value);
+    },
   },
   components: { Boss, Bor },
 };

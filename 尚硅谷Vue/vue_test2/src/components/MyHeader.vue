@@ -16,7 +16,6 @@ export default {
   //     title: "",
   //   };
   // },
-  props: ["receive"],
   methods: {
     // 获取用户输入
     // 第一种
@@ -26,7 +25,7 @@ export default {
         // 将用户的输入包装成一个todo对象
         const todoObj = { id: nanoid(), name: event.target.value, done: false };
         // 通知header添加数据
-        this.receive(todoObj);
+        this.$emit("receive", todoObj);
         // 清空输入
         event.target.value = "";
       }

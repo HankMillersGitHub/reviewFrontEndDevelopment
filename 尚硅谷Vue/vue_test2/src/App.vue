@@ -2,7 +2,7 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <MyHeader :receive="addTodo" />
+        <MyHeader @receive="addTodo" />
         <MyList
           :todos="todos"
           :changeDone="changeDone"

@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
-    <h2 class="title">小弟名称：{{ name }}</h2>
-    <h2 id="title">小弟地址：{{ address }}</h2>
+    <h2>小弟名称：{{ name }}</h2>
+    <h2>小弟地址：{{ address }}</h2>
   </div>
 </template>
 <script>
@@ -15,11 +15,8 @@ export default {
   },
 };
 </script>
-<style scoped lang='less'>
+<style scoped lang='css'>
 .demo {
   background-color: orange;
-  #title {
-    background-color: yellow;
-  }
 }
 </style>
