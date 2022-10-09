@@ -23,11 +23,7 @@ export default {
       // 校验数据
       if (event.target.value.trim() !== "") {
         // 将用户的输入包装成一个todo对象
-        const todoObj = {
-          id: nanoid(),
-          name: event.target.value,
-          done: false,
-        };
+        const todoObj = { id: nanoid(), name: event.target.value, done: false };
         // 通知header添加数据
         this.$emit("receive", todoObj);
         // 清空输入

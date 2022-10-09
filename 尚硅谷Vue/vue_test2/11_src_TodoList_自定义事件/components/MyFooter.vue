@@ -13,19 +13,16 @@
   </div>
 </template>
 <script>
-import pubsub from "pubsub-js";
 export default {
   name: "MyFooter",
   props: ["todos"],
-
   methods: {
     // ! 对应第一种写法
     // checkAll(e) {
     //   this.checkedAllTodo(e.target.checked);
     // },
     clearAll() {
-      // this.$emit("clearAllTodo");
-      pubsub.publish("clearAll");
+      this.$emit("clearAllTodo");
     },
   },
   computed: {

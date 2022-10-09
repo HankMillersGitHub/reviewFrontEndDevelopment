@@ -8,46 +8,25 @@
       />
       <!-- 如下代码也能实现功能但是不推荐使用  因为修改了props 违反原则 -->
       <!-- <input type="checkbox" v-model="todoObj.done" /> -->
-      <span v-show="!todoObj.isEdit">{{ todoObj.name }}</span>
-      <input
-        type="text"
-        v-show="todoObj.isEdit"
-        :value="todoObj.name"
-        @blur="confirmEdit(todoObj)"
-      />
+      <span>{{ todoObj.name }}</span>
     </label>
-    <button class="btn btn-danger" @click="iDeleteTodo(todoObj.id)">删除</button
-    ><button class="btn btn-warning" @click="handleEidt(todoObj)">编辑</button>
+    <button class="btn btn-danger" @click="iDeleteTodo(todoObj.id)">
+      删除
+    </button>
   </li>
 </template>
 <script>
-import pubsub from "pubsub-js";
 export default {
   name: "MyItem",
   // 声明接收todo对象
-  props: ["todoObj"],
+  props: ["todoObj", "changeDone", "deleteTodo"],
   methods: {
-    // 失焦修改成功
-    confirmEdit(todoObj) {
-      console.log(todoObj);
-      this.todoObj.name = todoObj.name;
-      todoObj.isEdit = false;
-    },
-    // 点击编辑 添加edit属性
-    handleEidt(todo) {
-      if (todo.hasOwnProperty("isEdit")) {
-        todo.isEdit = true;
-      } else {
-        this.$set(todo, "isEdit", true);
-      }
-    },
-    // 点击选中
     handleCheck(id) {
-      this.$bus.$emit("changeDone", id);
+      // 通知app组件将对应的todo对象的done值取反
+      this.changeDone(id);
     },
-    // 点击删除
     iDeleteTodo(id) {
-      if (confirm("确定删除吗?")) pubsub.publish("deleteOne", id);
+      if (confirm("确定删除吗?")) this.deleteTodo(id);
     },
   },
 };
